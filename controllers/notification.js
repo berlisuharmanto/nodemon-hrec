@@ -9,9 +9,10 @@ const getNotifications = async (req, res) => {
   }
 };
 
-const getNotification = async (req, res) => {
+const getUserNotification = async (req, res) => {
   try {
-    const notification = await Notification.findById(req.params.id);
+    const { hrd } = req.params;
+    const notification = await Notification.find({ hrd: hrd });
     res.status(200).send(notification);
   } catch (error) {
     res.status(400).send(error.message);
@@ -20,11 +21,12 @@ const getNotification = async (req, res) => {
 
 const createNotification = async (req, res) => {
   try {
-    const { hrd, appli } = req.body;
+    const { hrd, appli, status } = req.body;
 
     const notification = new Notification({
       hrd,
       appli,
+      status,
       date: new Date(),
     });
     await notification.save();
@@ -34,8 +36,18 @@ const createNotification = async (req, res) => {
   }
 };
 
+const deleteNotification = async (req, res) => {
+  try {
+    await Notification.findByIdAndDelete(req.params.id);
+    res.status(200).send("Notification deleted");
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
 module.exports = {
   getNotifications,
-  getNotification,
+  getUserNotification,
   createNotification,
+  deleteNotification,
 };

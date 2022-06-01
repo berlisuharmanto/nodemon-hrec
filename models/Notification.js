@@ -9,6 +9,10 @@ const notificationSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
+  status: {
+    type: String,
+    required: true,
+  },
   date: {
     type: Date,
     required: true,

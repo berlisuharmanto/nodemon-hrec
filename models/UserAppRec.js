@@ -23,7 +23,7 @@ const userAppRecSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  position: {
+  degree: {
     type: String,
     required: true,
   },

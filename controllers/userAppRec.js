@@ -12,13 +12,8 @@ const signUp = async (req, res) => {
       experience,
       plainPassword,
       confPass,
-      position,
-      status,
+      degree,
     } = req.body;
-
-    console.log(req.body);
-
-    console.log(plainPassword == confPass);
 
     const password = await bcrypt.hash(plainPassword, 10);
 
@@ -39,12 +34,38 @@ const signUp = async (req, res) => {
         specialization,
         experience,
         password,
-        position,
-        status,
+        degree,
+        status: false,
       });
       await userAppRec.save();
       res.status(201).send(userAppRec);
     }
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
+const acceptUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userAppRec = await UserAppRec.findByIdAndUpdate(
+      id,
+      {
+        status: true,
+      },
+      { new: true }
+    );
+    res.status(200).send(userAppRec);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
+const deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userAppRec = await UserAppRec.findByIdAndDelete(id);
+    res.status(200).send(userAppRec);
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -107,4 +128,6 @@ module.exports = {
   getUsers,
   updateUser,
   getUser,
+  acceptUser,
+  deleteUser,
 };
