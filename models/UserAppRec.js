@@ -19,13 +19,35 @@ const userAppRecSchema = new mongoose.Schema({
       required: true,
     },
   ],
-  password: {
-    type: String,
-    required: true,
-  },
   degree: {
     type: String,
     required: true,
+  },
+  evaluation: {
+    speech: {
+      type: Number,
+      required: true,
+    },
+    leadership: {
+      type: Number,
+      required: true,
+    },
+    thinking: {
+      type: Number,
+      required: true,
+    },
+    math: {
+      type: Number,
+      required: true,
+    },
+    solving: {
+      type: Number,
+      required: true,
+    },
+    organizing: {
+      type: Number,
+      required: true,
+    },
   },
   status: {
     type: Boolean,

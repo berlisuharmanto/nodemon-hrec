@@ -5,25 +5,12 @@ const expresValidator = require("express-validator");
 
 const signUp = async (req, res) => {
   try {
-    const {
-      name,
-      email,
-      specialization,
-      experience,
-      plainPassword,
-      confPass,
-      degree,
-    } = req.body;
-
-    const password = await bcrypt.hash(plainPassword, 10);
+    const { name, email, specialization, experience, degree, evaluation } =
+      req.body;
 
     const userExist = await checkIdentical("email", email);
 
-    if (plainPassword !== confPass) {
-      return res.status(400).json({
-        message: "Passwords do not match",
-      });
-    } else if (userExist) {
+    if (userExist) {
       return res.status(400).json({
         message: "User already exists",
       });
@@ -33,8 +20,8 @@ const signUp = async (req, res) => {
         email,
         specialization,
         experience,
-        password,
         degree,
+        evaluation,
         status: false,
       });
       await userAppRec.save();

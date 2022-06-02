@@ -14,7 +14,6 @@ const imageRecRouter = require("./routes/imageRec");
 const userAppRec = require("./routes/userAppRec");
 const imageAppRec = require("./routes/ImageAppRec");
 const notification = require("./routes/notification");
-const evaluation = require("./routes/evaluation");
 
 app.use(cors());
 app.use(express.json());
@@ -27,7 +26,7 @@ const notFoundMiddleware = require("./middleware/not-found");
 
 app.get("/api/v1", (req, res) => {
   res.send(
-    '<h1>HREC API</h1><a href="/api/v1/userrec/users/">User Recruiter List</a><br><a href="/api/v1/imagerec/">Image Rec List</a><br><a href="/api/v1/userapprec/users/">User Application Recruiter List</a><br><a href="/api/v1/imageapprec/">Image Application Rec List</a><br><a href="/api/v1/notification/">Notification List</a><br><a href="/api/v1/evaluation/">Evaluation List</a>'
+    '<h1>HREC API</h1><a href="/api/v1/userrec/users/">User Recruiter List</a><br><a href="/api/v1/imagerec/">Image Rec List</a><br><a href="/api/v1/userapprec/users/">User Application Recruiter List</a><br><a href="/api/v1/imageapprec/">Image Application Rec List</a><br><a href="/api/v1/notification/">Notification List</a>'
   );
 });
 
@@ -36,7 +35,6 @@ app.use("/api/v1/imagerec", imageRecRouter);
 app.use("/api/v1/userapprec", userAppRec);
 app.use("/api/v1/imageapprec", imageAppRec);
 app.use("/api/v1/notification", notification);
-app.use("/api/v1/evaluation", evaluation);
 
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);
