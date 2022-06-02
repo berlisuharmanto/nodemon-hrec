@@ -26,7 +26,7 @@ const notFoundMiddleware = require("./middleware/not-found");
 
 app.get("/api/v1", (req, res) => {
   res.send(
-    '<h1>HREC API</h1><a href="/api/v1/userrec/users/">User Recruiter List</a><br><a href="/api/v1/imagerec/">Image Rec List</a><br><a href="/api/v1/userapprec/users/">User Application Recruiter List</a><br><a href="/api/v1/imageapprec/">Image Application Rec List</a><br><a href="/api/v1/notification/">Notification List</a>'
+    '<h1>HREC API</h1><a href="/api/v1/userrec/users/">User Recruiter List</a><br><a href="/api/v1/imagerec/">Image Rec List</a><br><a href="/api/v1/userapprec/users/">User Application Recruiter List</a><br><a href="/api/v1/imageapprec/">Image Application Rec List</a><br><a href="/api/v1/notification/">Notification List</a><br><a href="https://github.com/berlisuharmanto/nodemon-hrec/blob/main/README.md">README</a>'
   );
 });
 
